@@ -6,9 +6,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Enter the first number ");
         Scanner sc = new Scanner(System.in);
-        int firstNum = sc.nextInt();
+        float firstNum = sc.nextFloat();
         System.out.println("Enter the second number ");
-        int secondNum = sc.nextInt();
+        float secondNum = sc.nextFloat();
 
         System.out.println("Possible calculations:");
         System.out.println("   (A)dd");
@@ -18,16 +18,16 @@ public class Main {
         System.out.println("Please select an operation: ");
         String operation = sc.next();
         if (operation.equalsIgnoreCase("A")) {
-            System.out.printf("%d + %d = %d\n", firstNum, secondNum, firstNum + secondNum);
+            System.out.printf("%f + %f = %f\n", firstNum, secondNum, firstNum + secondNum);
         }
         else if (operation.equalsIgnoreCase("S")) {
-            System.out.printf("%d - %d = %d\n", firstNum, secondNum, firstNum - secondNum);
+            System.out.printf("%f - %f = %f\n", firstNum, secondNum, firstNum - secondNum);
         }
         else if (operation.equalsIgnoreCase("M")) {
-            System.out.printf("%d * %d = %d\n", firstNum, secondNum, firstNum * secondNum);
+            System.out.printf("%f * %f = %f\n", firstNum, secondNum, firstNum * secondNum);
         }
         else if (operation.equalsIgnoreCase("D")) {
-            System.out.printf("%d / %d = %f\n", firstNum, secondNum, (double)firstNum / secondNum);
+            System.out.printf("%f / %f = %f\n", firstNum, secondNum, firstNum / secondNum);
         }
         else {
             System.out.println("Please make a valid input");
