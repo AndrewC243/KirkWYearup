@@ -10,12 +10,20 @@ public class Main {
         System.out.println("Enter the second number ");
         float secondNum = sc.nextFloat();
 
-        System.out.println("Possible calculations:");
-        System.out.println("   (A)dd");
-        System.out.println("   (S)ubtract");
-        System.out.println("   (M)ultiply");
-        System.out.println("   (D)ivide");
-        System.out.println("Please select an operation: ");
+//        System.out.println("Possible calculations:");
+//        System.out.println("   (A)dd");
+//        System.out.println("   (S)ubtract");
+//        System.out.println("   (M)ultiply");
+//        System.out.println("   (D)ivide");
+//        System.out.println("Please select an operation: ");
+        System.out.println("""
+                Possible calculations:
+                    (A)dd
+                    (S)subtract
+                    (M)ultiply
+                    (D)ivide
+                Please select an operation: """);
+
         String operation = sc.next();
         if (operation.equalsIgnoreCase("A")) {
             System.out.printf("%f + %f = %f\n", firstNum, secondNum, firstNum + secondNum);
