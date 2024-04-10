@@ -35,6 +35,11 @@ public class Main {
             System.out.printf("%f * %f = %f\n", firstNum, secondNum, firstNum * secondNum);
         }
         else if (operation.equalsIgnoreCase("D")) {
+
+            if (secondNum == 0) {
+                System.out.println("Please make a valid input");
+                return;
+            }
             System.out.printf("%f / %f = %f\n", firstNum, secondNum, firstNum / secondNum);
         }
         else {
