@@ -26,13 +26,13 @@ public class Main {
 
         String operation = sc.next();
         if (operation.equalsIgnoreCase("A")) {
-            System.out.printf("%f + %f = %f\n", firstNum, secondNum, firstNum + secondNum);
+            System.out.printf("%f + %f = %f\n", firstNum, secondNum, add(firstNum, secondNum));
         }
         else if (operation.equalsIgnoreCase("S")) {
-            System.out.printf("%f - %f = %f\n", firstNum, secondNum, firstNum - secondNum);
+            System.out.printf("%f - %f = %f\n", firstNum, secondNum, subtract(firstNum, secondNum));
         }
         else if (operation.equalsIgnoreCase("M")) {
-            System.out.printf("%f * %f = %f\n", firstNum, secondNum, firstNum * secondNum);
+            System.out.printf("%f * %f = %f\n", firstNum, secondNum, multiply(firstNum, secondNum));
         }
         else if (operation.equalsIgnoreCase("D")) {
 
@@ -40,10 +40,22 @@ public class Main {
                 System.out.println("Please make a valid input");
                 return;
             }
-            System.out.printf("%f / %f = %f\n", firstNum, secondNum, firstNum / secondNum);
+            System.out.printf("%f / %f = %f\n", firstNum, secondNum, divide(firstNum, secondNum));
         }
         else {
             System.out.println("Please make a valid input");
         }
+    }
+    public static float add (float firstNum, float secondNum) {
+        return firstNum + secondNum;
+    }
+    public static float subtract (float firstNum, float secondNum) {
+        return firstNum - secondNum;
+    }
+    public static float multiply (float firstNum, float secondNum) {
+        return firstNum * secondNum;
+    }
+    public static float divide (float firstNum, float secondNum) {
+        return firstNum / secondNum;
     }
 }
