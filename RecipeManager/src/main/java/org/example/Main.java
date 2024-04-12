@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+record Recipe(String dish, ArrayList<String> ingredients, ArrayList<String> instructions) {
+    public String toString() {
+        String ret = this.dish + "\n";
+        for(String ingredient : ingredients) {
+            ret += "\t" + ingredient + "\n";
+        }
+        ret += "\n";
+        for(String instruction : instructions) {
+            ret += "\t" + instruction + "\n";
+        }
+        return ret;
+    }
+}
+
 public class Main {
     private ArrayList<Recipe> recipes = new ArrayList();
-
-    public record Recipe(String dish, ArrayList<String> ingredients, ArrayList<String> instructions) {
-        public String toString() {
-            String ret = this.dish + "\n";
-            for(String ingredient : ingredients) {
-                ret += "\t" + ingredient + "\n";
-            }
-            ret += "\n";
-            for(String instruction : instructions) {
-                ret += "\t" + instruction + "\n";
-            }
-            return ret;
-        }
-    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
