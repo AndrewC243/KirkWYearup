@@ -4,9 +4,9 @@ public class Person {
     private int health;
     private int hunger;
     private String name;
-    private String occupation;
+    private Occupation occupation;
 
-    public Person(int health, int hunger, String name, String occupation) {
+    public Person(int health, int hunger, String name, Occupation occupation) {
         this.health = health;
         this.hunger = hunger;
         this.name = name;
@@ -25,7 +25,7 @@ public class Person {
         this.name = name;
     }
 
-    public void setOccupation(String occupation) {
+    public void setOccupation(Occupation occupation) {
         this.occupation = occupation;
     }
 
@@ -41,7 +41,7 @@ public class Person {
         return name;
     }
 
-    public String getOccupation() {
+    public Occupation getOccupation() {
         return occupation;
     }
 }

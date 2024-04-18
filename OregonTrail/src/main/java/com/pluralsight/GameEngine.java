@@ -26,9 +26,24 @@ public class GameEngine {
             System.out.println("What is player "  + i + 1 + "'s name?");
             String name = scanner.nextLine();
             System.out.println("What is player " + i + 1 + "'s occupation??");
+            System.out.println("Farmer | Hunter | Doctor | Pastor | Carpenter | Sheriff | Prospector");
             String occupation = scanner.nextLine();
-            personBuilder[i] = new Person(100, 100, name, occupation);
+            Occupation o = stringToOccupation(occupation);
+            personBuilder[i] = new Person(100, 100, name, o);
         }
         setPersons(personBuilder);
+    }
+
+    private Occupation stringToOccupation(String occupation) {
+        return switch (occupation) {
+            case "Farmer" -> Occupation.FARMER;
+            case "Hunter" -> Occupation.HUNTER;
+            case "Doctor" -> Occupation.DOCTOR;
+            case "Pastor" -> Occupation.PASTOR;
+            case "Carpenter" -> Occupation.CARPENTER;
+            case "Sheriff" -> Occupation.SHERIFF;
+            case "Prospector" -> Occupation.PROSPECTOR;
+            default -> throw new IllegalArgumentException();
+        };
     }
 }
