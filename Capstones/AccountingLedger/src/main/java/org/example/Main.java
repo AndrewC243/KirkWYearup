@@ -1,6 +1,4 @@
-package com.pluralsight;
-
-import java.util.Date;
+package org.example;
 
 public class Main {
     public static void main(String[] args) {
