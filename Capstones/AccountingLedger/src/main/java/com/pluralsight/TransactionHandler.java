@@ -72,7 +72,7 @@ public class TransactionHandler {
     public void writeTransaction(Transaction transaction) {
         transactionList.addFirst(transaction);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(transactionFile, true))) {
-            bw.write(transaction.toCSV());
+            bw.append(transaction.toCSV());
         } catch (IOException e) {
             System.out.println("Could not write transaction file.");
         }

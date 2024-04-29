@@ -32,7 +32,7 @@ public class Transaction implements Comparable<Transaction> {
                 dateTimeSeparated[1] + " -- " +
                 description + " -- " +
                 vendor + " -- " +
-                String.format("%.2f", amount) + "\n";
+                String.format("%.2f", amount);
     }
 
     public Date getDate() {
