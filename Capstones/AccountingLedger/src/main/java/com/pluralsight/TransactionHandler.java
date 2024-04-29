@@ -18,6 +18,19 @@ public class TransactionHandler {
     // oh boy here we go
     // uses calendar to set filter
     // continues adding to list until the date in the loop is no longer within the specified bounds
+    public List<Transaction> filter(boolean payment) {
+        List<Transaction> l = new ArrayList<>();
+        if (payment) {
+            for (Transaction t : transactionList) {
+                if (t.getAmount() < 0) l.add(t);
+            }
+            return l;
+        }
+        for (Transaction t : transactionList) {
+            if (t.getAmount() > 0) l.add(t);
+        }
+        return l;
+    }
     public List<Transaction> filter(Calendar c) {
         List<Transaction> l = new ArrayList<>();
 

@@ -23,12 +23,16 @@ public class Transaction implements Comparable<Transaction> {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return "\n" + (df.format(cal.getTime()))
-                + "|" + description + "|" + vendor + "|" + amount;
+                + "|" + description + "|" + vendor + "|" + String.format("%.2f", amount);
     }
 
     public String toString() {
         String[] dateTimeSeparated = df.format(date).split("\\|");
-        return dateTimeSeparated[0] + " -- " + dateTimeSeparated[1] + " -- " + description + " -- " + vendor + " -- " + amount + "\n";
+        return dateTimeSeparated[0] + " -- " +
+                dateTimeSeparated[1] + " -- " +
+                description + " -- " +
+                vendor + " -- " +
+                String.format("%.2f", amount) + "\n";
     }
 
     public Date getDate() {
