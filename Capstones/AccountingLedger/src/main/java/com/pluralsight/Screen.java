@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -103,6 +105,7 @@ public class Screen {
                     3) Year to date
                     4) Previous year
                     5) Search by vendor
+                    6) Custom search
                     0) Back
                     """);
 
@@ -116,6 +119,10 @@ public class Screen {
                         input.nextLine();
                         searchByVendor();
                     }
+                    case 6 -> {
+                        input.nextLine();
+                        customSearch();
+                    }
                     case 0 -> {
                         return;
                     }
@@ -125,6 +132,41 @@ public class Screen {
                 System.out.println("Invalid option.");
             }
         }
+    }
+
+    public void customSearch() {
+        TransactionFilter tf = new TransactionFilter();
+        var sdf = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("Leave any field blank to exclude it as a searching criteria.");
+        try {
+            System.out.println("Start date (yyyy-mm-dd):");
+            String in = input.nextLine();
+            if (!in.isEmpty()) tf.setStartDate(sdf.parse(in));
+
+            System.out.println("End date (yyyy-mm-dd):");
+            in = input.nextLine();
+            if (!in.isEmpty()) tf.setEndDate(sdf.parse(in));
+
+            System.out.println("Description:");
+            in = input.nextLine();
+            if (!in.isEmpty()) tf.setDescription(in);
+
+            System.out.println("Vendor:");
+            in = input.nextLine();
+            if (!in.isEmpty()) tf.setVendor(in);
+
+            System.out.println("Minimum amount:");
+            in = input.nextLine();
+            if (!in.isEmpty()) tf.setAmountMin(Double.parseDouble(in));
+
+            System.out.println("Maximum amount:");
+            in = input.nextLine();
+            if (!in.isEmpty()) tf.setAmountMax(Double.parseDouble(in));
+        } catch (ParseException | InputMismatchException e) {
+            System.out.println("Invalid input. Aborting.");
+            return;
+        }
+        displayList(th.filter(tf));
     }
 
     public void searchByVendor() {

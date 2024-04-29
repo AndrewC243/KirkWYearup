@@ -47,6 +47,20 @@ public class TransactionHandler {
         }
         return l;
     }
+    public List<Transaction> filter(TransactionFilter tf) {
+        List<Transaction> l = new ArrayList<>();
+        for (Transaction t : transactionList) {
+            if (
+                    t.getDate().before(tf.getEndDate())
+                    && t.getDate().after(tf.getStartDate())
+                    && t.getDescription().contains(tf.getDescription())
+                    && t.getVendor().contains(tf.getVendor())
+                    && t.getAmount() >= tf.getAmountMin()
+                    && t.getAmount() <= tf.getAmountMax()
+            ) l.add(t);
+        }
+        return l;
+    }
     public List<Transaction> monthToDate() {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.DAY_OF_MONTH, 1);
