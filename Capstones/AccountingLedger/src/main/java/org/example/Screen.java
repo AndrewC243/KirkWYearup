@@ -33,6 +33,7 @@ public class Screen {
     }
 
     public void addDeposit() {
+        FunTimes.rollForDexterity();
         System.out.println("Please enter a description for the deposit:");
         String description = input.nextLine();
         System.out.println("Please enter who it came from:");
@@ -53,6 +54,7 @@ public class Screen {
     }
 
     public void addPayment() {
+        FunTimes.rollForDexterity();
         System.out.println("Please enter a description for the payment:");
         String description = input.nextLine();
         System.out.println("Please enter who it is to:");
@@ -74,6 +76,7 @@ public class Screen {
 
     public void showLedger() {
         while (true) {
+            FunTimes.rollForDexterity();
             System.out.println("""
                     How would you like to view the ledger?
                     A) All
@@ -98,6 +101,7 @@ public class Screen {
 
     public void reports() {
         while (true) {
+            FunTimes.rollForDexterity();
             System.out.println("""
                     Use one of the following filters or search by vendor:
                     1) Month to date
@@ -135,6 +139,7 @@ public class Screen {
     }
 
     public void customSearch() {
+        FunTimes.rollForDexterity();
         TransactionFilter tf = new TransactionFilter();
         var sdf = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println("Leave any field blank to exclude it as a searching criteria.");
@@ -170,13 +175,17 @@ public class Screen {
     }
 
     public void searchByVendor() {
+        FunTimes.rollForDexterity();
         System.out.println("Enter a vendor name: ");
         String vendor = input.nextLine();
         displayList(th.filter(vendor));
     }
 
     public void displayList(List<Transaction> transactions) {
+        FunTimes.rollForDexterity();
         for (Transaction transaction : transactions)
-            System.out.println(transaction);
+            if (FunTimes.perceptionCheck()) {
+                System.out.println(transaction);
+            } else System.out.println("Perception check failed.");
     }
 }
