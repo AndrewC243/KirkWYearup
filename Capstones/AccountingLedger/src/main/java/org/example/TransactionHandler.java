@@ -51,8 +51,10 @@ public class TransactionHandler {
         List<Transaction> l = new ArrayList<>();
         for (Transaction t : transactionList) {
             if (
-                    t.getDate().before(tf.getEndDate())
-                    && t.getDate().after(tf.getStartDate())
+            (t.getDate().before(tf.getEndDate())
+                    || t.getDate().equals(tf.getEndDate()))
+                    && (t.getDate().after(tf.getStartDate())
+                    || t.getDate().equals(tf.getStartDate()))
                     && t.getDescription().contains(tf.getDescription())
                     && t.getVendor().contains(tf.getVendor())
                     && t.getAmount() >= tf.getAmountMin()

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-// Comparable implementation sourced from https://stackoverflow.com/questions/5927109/sort-objects-in-arraylist-by-date
+// Comparable implementation idea sourced from https://stackoverflow.com/questions/5927109/sort-objects-in-arraylist-by-date
 public class Transaction implements Comparable<Transaction> {
     public static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd|HH:mm:ss");
     private Date date;
