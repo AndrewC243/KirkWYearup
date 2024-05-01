@@ -66,6 +66,9 @@ public class TransactionHandler {
     public List<Transaction> monthToDate() {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.DAY_OF_MONTH, 1);
+        c.set(Calendar.HOUR, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
         return filter(c);
     }
     public List<Transaction> previousMonth() {
