@@ -64,6 +64,7 @@ public class Screen {
         input.nextLine();
         if (amount <= 0) {
             System.out.println("Invalid payment amount. Aborting.");
+            FunTimes.mathCaptcha();
             return;
         }
         th.writeTransaction(new Transaction(
@@ -94,7 +95,10 @@ public class Screen {
                 case "H" -> {
                     return;
                 }
-                default -> System.out.println("Invalid option.");
+                default -> {
+                    System.out.println("Invalid option.");
+                    FunTimes.mathCaptcha();
+                }
             }
         }
     }
@@ -130,10 +134,14 @@ public class Screen {
                     case 0 -> {
                         return;
                     }
-                    default -> System.out.println("Invalid option.");
+                    default -> {
+                        System.out.println("Invalid option.");
+                        FunTimes.mathCaptcha();
+                    }
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid option.");
+                FunTimes.mathCaptcha();
             }
         }
     }
@@ -169,6 +177,7 @@ public class Screen {
             if (!in.isEmpty()) tf.setAmountMax(Double.parseDouble(in));
         } catch (ParseException | InputMismatchException e) {
             System.out.println("Invalid input. Aborting.");
+            FunTimes.mathCaptcha();
             return;
         }
         displayList(th.filter(tf));
