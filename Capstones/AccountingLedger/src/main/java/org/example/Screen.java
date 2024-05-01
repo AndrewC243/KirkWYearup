@@ -28,6 +28,10 @@ public class Screen {
                 case "X" -> {
                     return;
                 }
+                default -> {
+                    System.out.println("Invalid option");
+                    FunTimes.mathCaptcha();
+                }
             }
         }
     }
