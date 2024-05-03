@@ -129,6 +129,7 @@ public class Screen {
                     default -> System.out.println("Invalid option.");
                 }
             } catch (InputMismatchException e) {
+                input.nextLine();
                 System.out.println("Invalid option.");
             }
         }
