@@ -144,6 +144,7 @@ public class Screen {
                     }
                 }
             } catch (InputMismatchException e) {
+                input.nextLine();
                 System.out.println("Invalid option.");
                 FunTimes.mathCaptcha();
             }
