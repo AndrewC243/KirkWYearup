@@ -24,9 +24,9 @@ public class FunTimes {
         int x = (int)(Math.random() * 10 + 1);
         int y = (int)(Math.random() * 10 + 1);
         int z = (int)(Math.random() * 10 + 1);
-        System.out.printf("What is %d * %d / %d?\t", x, y, z);
+        System.out.printf("What is %d * %d / %d? Round down in your answer.\t", x, y, z);
         try {
-            if (sc.nextDouble() != x * y / (double)z) {
+            if (sc.nextDouble() != x * y / z) {
                 System.out.println("Incorrect. Generating new captcha.");
                 mathCaptcha();
             }
