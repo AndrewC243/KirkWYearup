@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.delicious.MainController">
+   <children>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="240.0" prefWidth="680.0" spacing="15.0">
+         <children>
+            <ChoiceBox fx:id="sigSandwiches" prefWidth="150.0" scaleY="0.9" />
+             <Button mnemonicParsing="false" onAction="#useSigSandwich" text="Use Signature Sandwich" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" />
+         </padding></HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="240.0" prefWidth="640.0" spacing="10.0">
+          <Button mnemonicParsing="false" onAction="#sandwichBuilder" text="Start From Scratch" />
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

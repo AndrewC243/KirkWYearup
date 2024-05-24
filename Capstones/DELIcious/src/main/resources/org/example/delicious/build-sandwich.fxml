@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.delicious.MainController">
+   <bottom>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+            <Button mnemonicParsing="false" onAction="#cancelOrder" text="Cancel" translateX="15.0" ButtonBar.buttonData="LEFT" />
+            <Button mnemonicParsing="false" onAction="#addOns" text="Next" translateX="-15.0" />
+        </buttons>
+      </ButtonBar>
+   </bottom>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <ChoiceBox fx:id="Size" prefWidth="150.0" />
+            <ChoiceBox fx:id="Bread" prefWidth="150.0" />
+            <Button fx:id="Meat" mnemonicParsing="false" onAction="#addSomething" text="Add Meat" />
+            <Button fx:id="Cheese" mnemonicParsing="false" onAction="#addSomething" text="Add Cheese" />
+            <Button fx:id="RegTopping" mnemonicParsing="false" onAction="#addSomething" text="Add Topping" />
+            <Button fx:id="Sauce" mnemonicParsing="false" onAction="#addSomething" text="Add Sauce" />
+            <CheckBox fx:id="sidesauce" mnemonicParsing="false" text="Suace on Side" />
+            <CheckBox fx:id="aujus" mnemonicParsing="false" text="Au Jus" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></VBox>
+   </center>
+</BorderPane>

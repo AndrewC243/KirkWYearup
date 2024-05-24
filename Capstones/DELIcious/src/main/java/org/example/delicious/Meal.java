@@ -37,6 +37,7 @@ public class Meal {
     private boolean toasted;
     private boolean sauceOnSide;
     private boolean auJus;
+    private boolean chips;
 
     private Meal(MealBuilder builder) {
         this.sandwichSize = builder.sandwichSize;
@@ -49,6 +50,7 @@ public class Meal {
         this.toasted = builder.toasted;
         this.sauceOnSide = builder.sauceOnSide;
         this.auJus = builder.auJus;
+        this.chips = builder.chips;
     }
 
     private void setSandwichSize(SandwichSize sandwichSize) {
@@ -75,6 +77,7 @@ public class Meal {
     private void setToasted(boolean toasted) { this.toasted = toasted; }
     private void setSauceOnSide(boolean sauceOnSide) { this.sauceOnSide = sauceOnSide; }
     private void setAuJus(boolean auJus) { this.auJus = auJus; }
+    private void setChips(boolean chips) { this.chips = chips; }
 
     public SandwichSize getSandwichSize() {
         return sandwichSize;
@@ -107,6 +110,7 @@ public class Meal {
     public boolean auJus() {
         return auJus;
     }
+    public boolean getChips() { return chips; }
 
 //    implements cloneable in order to have signature sandwich templates
     static class MealBuilder implements Cloneable {
@@ -120,23 +124,36 @@ public class Meal {
         private boolean toasted;
         private boolean sauceOnSide;
         private boolean auJus;
+        private boolean chips;
 
         public MealBuilder () {
             meats = new ArrayList<>();
             cheeses = new ArrayList<>();
             sauces = new ArrayList<>();
             toppings = new ArrayList<>();
+            drinkSize = DrinkSize.NONE;
         }
+
+        public MealBuilder chips(boolean chips) {
+            this.chips = chips;
+            return this;
+        }
+
+        public boolean hasChips() { return chips; }
 
         public MealBuilder toasted(boolean toasted) {
             this.toasted = toasted;
             return this;
         }
 
+        public boolean isToasted() { return toasted; }
+
         public MealBuilder sauceOnSide(boolean sauceOnSide) {
             this.sauceOnSide = sauceOnSide;
             return this;
         }
+
+        public boolean hasSauceOnSide() { return sauceOnSide; }
 
         public MealBuilder auJus(boolean auJus) {
             this.auJus = auJus;
@@ -186,10 +203,10 @@ public class Meal {
         public MealBuilder clone() {
             try {
                 MealBuilder clone = (MealBuilder) super.clone();
-                clone.meats = List.copyOf(meats);
-                clone.cheeses = List.copyOf(cheeses);
-                clone.sauces = List.copyOf(sauces);
-                clone.toppings = List.copyOf(toppings);
+                clone.meats = new ArrayList<>(meats);
+                clone.cheeses = new ArrayList<>(cheeses);
+                clone.sauces = new ArrayList<>(sauces);
+                clone.toppings = new ArrayList<>(toppings);
                 return clone;
             } catch (CloneNotSupportedException e) {
                 throw new AssertionError();

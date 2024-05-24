@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.delicious.MainController">
+   <center>
+      <VBox fx:id="addonvbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#sandwichBuilder" text="Back" translateX="-15.0" ButtonBar.buttonData="YES" />
+            <Button mnemonicParsing="false" text="Next" translateX="-15.0" ButtonBar.buttonData="NO" />
+            <Button mnemonicParsing="false" onAction="#cancelOrder" text="Cancel" translateX="15.0" ButtonBar.buttonData="LEFT" />
+        </buttons>
+      </ButtonBar>
+   </bottom>
+</BorderPane>
