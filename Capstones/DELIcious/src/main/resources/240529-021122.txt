@@ -1,0 +1,38 @@
+1:
+Size: EIGHT_INCH
+Bread: WHITE
+Meats:
+STEAK
+Cheeses:
+AMERICAN
+Sauces:
+MAYO
+VINAIGRETTE
+Toppings:
+PEPPER
+Drink Size: NONE
+
+Toasted
+
+
+Total price: 21.0
+
+2:
+Size: EIGHT_INCH
+Bread: WHITE
+Meats:
+BACON
+Cheeses:
+CHEDDAR
+Sauces:
+RANCH
+Toppings:
+LETTUCE
+TOMATO
+Drink Size: NONE
+
+Toasted
+
+
+Total price: 21.0
+

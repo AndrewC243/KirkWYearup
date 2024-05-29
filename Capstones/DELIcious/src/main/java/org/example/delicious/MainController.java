@@ -1,18 +1,14 @@
 package org.example.delicious;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -30,9 +26,11 @@ import static org.example.delicious.JavaFxUtils.prepareScene;
 
 public class MainController {
     public static Meal.MealBuilder mealBuilder;
+    public static Order cart;
 
     static {
         mealBuilder = new Meal.MealBuilder();
+        cart = new Order();
     }
 
     public void sandwichBuilder(ActionEvent event) throws IOException {
@@ -60,8 +58,9 @@ public class MainController {
     }
 
     public void checkout(ActionEvent event) throws IOException {
-        Scene s = prepareScene(event, "checkout.fxml");
         Meal completedMeal = mealBuilder.build();
+
+        Scene s = prepareScene(event, "checkout.fxml");
         HBox hb = (HBox) s.lookup("#hbox");
         hb.setAlignment(Pos.CENTER);
         List<VBox> vboxes = new ArrayList<>();
@@ -102,7 +101,7 @@ public class MainController {
         hb.getChildren().addAll(vboxes);
 
         VBox topVb = centeredVbox();
-        Text priceTotal = new Text("Total price: " + new MealOrder(completedMeal).getPrice().toString());
+        Text priceTotal = new Text("Total price: " + Order.getPrice(completedMeal));
         priceTotal.setFont(Font.font(priceTotal.getFont().getName(), FontWeight.BOLD, 24));
         topVb.getChildren().add(priceTotal);
         ((BorderPane)s.lookup("#bpane")).setTop(topVb);
@@ -177,18 +176,32 @@ public class MainController {
         }
     }
 
-    public void saveOrder(ActionEvent event) throws IOException {
-        MealOrder mo = new MealOrder(mealBuilder.build());
-        mo.saveOrder();
-        mealBuilder = new Meal.MealBuilder();
-        prepareScene(event, "main-menu.fxml");
+    public void saveOrder(ActionEvent event) {
+        cart.saveOrder();
+        cancelOrder(event);
+    }
+    public void cancelOrder(ActionEvent event) {
+        cart = new Order();
+        ((Button) event.getSource()).getParent().lookup("#save").setDisable(true);
+        ((Button) event.getSource()).getParent().lookup("#startover").setDisable(true);
     }
 
-    public void cancelOrder(ActionEvent event) throws IOException {
+    public void saveMeal(ActionEvent event) throws IOException {
+        cart.addMeal(mealBuilder.build());
+        cancelMeal(event);
+    }
+    public void cancelMeal(ActionEvent event) throws IOException {
         mealBuilder = new Meal.MealBuilder();
-        prepareScene(event, "main-menu.fxml");
+        mainMenu(event);
     }
 
+    public void mainMenu(ActionEvent event) throws IOException {
+        Scene s = prepareScene(event, "main-menu.fxml");
+        if (!cart.isEmpty()) {
+            s.lookup("#save").setDisable(false);
+            s.lookup("#startover").setDisable(false);
+        }
+    }
     public void onExit(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.close();

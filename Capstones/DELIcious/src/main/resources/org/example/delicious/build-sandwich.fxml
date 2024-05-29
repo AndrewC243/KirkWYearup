@@ -8,7 +8,7 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#cancelOrder" text="Cancel" translateX="15.0" ButtonBar.buttonData="LEFT" />
+            <Button mnemonicParsing="false" onAction="#cancelMeal" text="Cancel" translateX="15.0" ButtonBar.buttonData="LEFT" />
             <Button mnemonicParsing="false" onAction="#addOns" text="Next" translateX="-15.0" />
         </buttons>
       </ButtonBar>

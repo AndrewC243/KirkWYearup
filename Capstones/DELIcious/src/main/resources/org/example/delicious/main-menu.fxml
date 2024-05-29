@@ -3,9 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:controller="org.example.delicious.MainController" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.delicious.MainController">
    <children>
       <Button mnemonicParsing="false" onAction="#newOrder" text="New Order" />
+      <Button fx:id="save" disable="true" mnemonicParsing="false" onAction="#saveOrder" text="Save Order To Receipt" />
+      <Button fx:id="startover" disable="true" mnemonicParsing="false" onAction="#cancelOrder" text="Start Order Over" />
       <Button mnemonicParsing="false" onAction="#onExit" text="Exit" />
    </children>
 </VBox>

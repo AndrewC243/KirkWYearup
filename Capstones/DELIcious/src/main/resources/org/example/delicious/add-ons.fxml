@@ -12,7 +12,7 @@
         <buttons>
           <Button mnemonicParsing="false" onAction="#sandwichBuilder" text="Back" translateX="-15.0" ButtonBar.buttonData="YES" />
             <Button mnemonicParsing="false" onAction="#checkout" text="Next" translateX="-15.0" ButtonBar.buttonData="NO" />
-            <Button mnemonicParsing="false" onAction="#cancelOrder" text="Cancel" translateX="15.0" ButtonBar.buttonData="LEFT" />
+            <Button mnemonicParsing="false" onAction="#cancelMeal" text="Cancel" translateX="15.0" ButtonBar.buttonData="LEFT" />
         </buttons>
       </ButtonBar>
    </bottom>
