@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -91,6 +92,10 @@ public class MainController {
                 .forEach(vboxes.get(4).getChildren()::add);
 
         hb.getChildren().addAll(vboxes);
+
+        VBox topVb = centeredVbox();
+        topVb.getChildren().add(new Text("Test price"));
+        ((BorderPane)s.lookup("#bpane")).setTop(topVb);
     }
 
     public void useSigSandwich(ActionEvent event) throws IOException {
@@ -141,7 +146,7 @@ public class MainController {
         VBox vbox = (VBox) scene.lookup("#vbadd");
         for (Object o : enVals) {
             Button b = new Button();
-            b.setText(((Enum<?>)o).name());
+            b.setText(o.toString());
             b.setOnAction(e -> {
                 switch (o) {
                     case Meat m -> mealBuilder.addMeat(m);
