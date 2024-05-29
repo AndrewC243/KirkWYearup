@@ -53,32 +53,6 @@ public class Meal {
         this.chips = builder.chips;
     }
 
-    private void setSandwichSize(SandwichSize sandwichSize) {
-        this.sandwichSize = sandwichSize;
-    }
-    private void setBread(Bread bread) {
-        this.bread = bread;
-    }
-    private void setMeats(List<Meat> meats) {
-        this.meats = meats;
-    }
-    private void setCheeses(List<Cheese> cheeses) {
-        this.cheeses = cheeses;
-    }
-    private void setSauces(List<Sauce> sauces) {
-        this.sauces = sauces;
-    }
-    private void setToppings(List<RegTopping> toppings) {
-        this.toppings = toppings;
-    }
-    private void setDrinkSize(DrinkSize drinkSize) {
-        this.drinkSize = drinkSize;
-    }
-    private void setToasted(boolean toasted) { this.toasted = toasted; }
-    private void setSauceOnSide(boolean sauceOnSide) { this.sauceOnSide = sauceOnSide; }
-    private void setAuJus(boolean auJus) { this.auJus = auJus; }
-    private void setChips(boolean chips) { this.chips = chips; }
-
     public SandwichSize getSandwichSize() {
         return sandwichSize;
     }
@@ -139,21 +113,15 @@ public class Meal {
             return this;
         }
 
-        public boolean hasChips() { return chips; }
-
         public MealBuilder toasted(boolean toasted) {
             this.toasted = toasted;
             return this;
         }
 
-        public boolean isToasted() { return toasted; }
-
         public MealBuilder sauceOnSide(boolean sauceOnSide) {
             this.sauceOnSide = sauceOnSide;
             return this;
         }
-
-        public boolean hasSauceOnSide() { return sauceOnSide; }
 
         public MealBuilder auJus(boolean auJus) {
             this.auJus = auJus;
