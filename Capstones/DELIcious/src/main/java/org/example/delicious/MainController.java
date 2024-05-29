@@ -14,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.example.delicious.enums.*;
@@ -38,11 +40,17 @@ public class MainController {
         ChoiceBox<String> breadSizes = (ChoiceBox<String>) s.lookup("#Size");
         for (SandwichSize size : SandwichSize.values())
             breadSizes.getItems().add(size.toString());
+        if (mealBuilder.build().getSandwichSize() != null)
+            breadSizes.setValue(mealBuilder.build().getSandwichSize().toString());
         breadSizes.setOnAction(e -> {
             mealBuilder.sandwichSize(SandwichSize.valueOf(breadSizes.getValue()));
         });
-        ChoiceBox<String> bread = (ChoiceBox<String>) s.lookup("#Bread");
-        bread.setOnAction(e -> mealBuilder.bread(Bread.valueOf(bread.getValue())));
+        ChoiceBox<String> breadTypes = (ChoiceBox<String>) s.lookup("#Bread");
+        for (Bread bread : Bread.values())
+            breadTypes.getItems().add(bread.toString());
+        if (mealBuilder.build().getBread() != null)
+            breadTypes.setValue(mealBuilder.build().getBread().toString());
+        breadTypes.setOnAction(e -> mealBuilder.bread(Bread.valueOf(breadTypes.getValue())));
         CheckBox sideSauce = (CheckBox) s.lookup("#sidesauce");
         sideSauce.setSelected(mealBuilder.build().sauceOnSide());
         CheckBox auJus = (CheckBox) s.lookup("#aujus");
@@ -94,7 +102,9 @@ public class MainController {
         hb.getChildren().addAll(vboxes);
 
         VBox topVb = centeredVbox();
-        topVb.getChildren().add(new Text("Test price"));
+        Text priceTotal = new Text("Total price: " + new MealOrder(completedMeal).getPrice().toString());
+        priceTotal.setFont(Font.font(priceTotal.getFont().getName(), FontWeight.BOLD, 24));
+        topVb.getChildren().add(priceTotal);
         ((BorderPane)s.lookup("#bpane")).setTop(topVb);
     }
 
@@ -115,6 +125,10 @@ public class MainController {
     }
 
     public void addOns(ActionEvent event) throws IOException {
+        Meal builtMeal = mealBuilder.build();
+        if (builtMeal.getSandwichSize() == null) return;
+        if (builtMeal.getBread() == null) return;
+
         Scene scene = prepareScene(event, "add-ons.fxml");
         VBox vbox = (VBox) scene.lookup("#addonvbox");
         ChoiceBox<String> cb = new ChoiceBox<>();
@@ -161,6 +175,13 @@ public class MainController {
             });
             vbox.getChildren().add(b);
         }
+    }
+
+    public void saveOrder(ActionEvent event) throws IOException {
+        MealOrder mo = new MealOrder(mealBuilder.build());
+        mo.saveOrder();
+        mealBuilder = new Meal.MealBuilder();
+        prepareScene(event, "main-menu.fxml");
     }
 
     public void cancelOrder(ActionEvent event) throws IOException {

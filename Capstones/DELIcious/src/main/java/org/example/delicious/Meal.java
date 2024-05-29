@@ -5,6 +5,7 @@ import org.example.delicious.enums.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Meal {
     public static final Map<String, MealBuilder> SIGNATURE_SANDWICHES = Map.of(
@@ -85,6 +86,20 @@ public class Meal {
         return auJus;
     }
     public boolean getChips() { return chips; }
+
+    @Override
+    public String toString() {
+        return "Size: " + sandwichSize
+                + "\nBread: " + bread
+                + "\nMeats:\n" + meats.stream().map(Meat::toString).collect(Collectors.joining("\n"))
+                + "\nCheeses:\n" + cheeses.stream().map(Cheese::toString).collect(Collectors.joining("\n"))
+                + "\nSauces:\n" + sauces.stream().map(Sauce::toString).collect(Collectors.joining("\n"))
+                + "\nToppings:\n" + toppings.stream().map(RegTopping::toString).collect(Collectors.joining("\n"))
+                + "\nDrink Size: " + drinkSize + "\n"
+                + (toasted ? "\nToasted\n" : "")
+                + (sauceOnSide ? "\nSauce on side\n" : "")
+                + (auJus ? "\nAu jus\n" : "");
+    }
 
 //    implements cloneable in order to have signature sandwich templates
     static class MealBuilder implements Cloneable {

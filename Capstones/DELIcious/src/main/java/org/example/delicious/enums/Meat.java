@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public enum Meat {
     STEAK, HAM, SALAMI, ROAST_BEEF, CHICKEN, BACON;
 
-    public BigDecimal getPrice(SandwichSize size) {
+    public static BigDecimal getPrice(SandwichSize size) {
         return switch (size) {
             case FOUR_INCH -> BigDecimal.ONE;
             case EIGHT_INCH -> BigDecimal.valueOf(2);
