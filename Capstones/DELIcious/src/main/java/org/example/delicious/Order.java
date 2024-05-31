@@ -49,9 +49,11 @@ public class Order {
     public static BigDecimal getPrice(Meal meal) {
         SandwichSize size = meal.getSandwichSize();
         BigDecimal total = meal.getSandwichSize().getPrice()
-                .add(Meat.getPrice(size))
-                .add(Cheese.getPrice(size))
                 .add(meal.getDrinkSize().getPrice());
+        if (!meal.getMeats().isEmpty())
+            total = total.add(Meat.getPrice(size));
+        if (!meal.getCheeses().isEmpty())
+            total = total.add(Cheese.getPrice(size));
         if (meal.getMeats().size() > 1)
             total = total.add(extraPremToppingModifier.get(Meat.class)
                     .multiply(Meat.getPrice(size))
