@@ -7,7 +7,6 @@ Cheeses:
 AMERICAN
 Sauces:
 MAYO
-VINAIGRETTE
 Toppings:
 PEPPER
 Drink Size: NONE
