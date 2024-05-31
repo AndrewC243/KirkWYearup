@@ -53,9 +53,13 @@ public class Order {
                 .add(Cheese.getPrice(size))
                 .add(meal.getDrinkSize().getPrice());
         if (meal.getMeats().size() > 1)
-            total = total.add(extraPremToppingModifier.get(Meat.class).multiply(BigDecimal.valueOf(meal.getMeats().size() - 1)));
+            total = total.add(extraPremToppingModifier.get(Meat.class)
+                    .multiply(Meat.getPrice(size))
+                    .multiply(BigDecimal.valueOf(meal.getMeats().size() - 1)));
         if (meal.getCheeses().size() > 1)
-            total = total.add(extraPremToppingModifier.get(Cheese.class).multiply(BigDecimal.valueOf(meal.getMeats().size() - 1)));
+            total = total.add(extraPremToppingModifier.get(Cheese.class)
+                    .multiply(Cheese.getPrice(size))
+                    .multiply(BigDecimal.valueOf(meal.getMeats().size() - 1)));
         if (meal.getChips())
             total = total.add(chipPrice);
         return total;
