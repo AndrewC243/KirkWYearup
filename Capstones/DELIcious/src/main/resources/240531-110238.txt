@@ -1,0 +1,44 @@
+1:
+Size: EIGHT_INCH
+Bread: WHITE
+Meats:
+STEAK
+Cheeses:
+AMERICAN
+Sauces:
+MAYO
+Toppings:
+PEPPER
+Drink Size: NONE
+
+Toasted
+
+Sauce on side
+
+Au jus
+
+
+Total price: 28.0
+
+2:
+Size: TWELVE_INCH
+Bread: WRAP
+Meats:
+STEAK
+STEAK
+STEAK
+STEAK
+STEAK
+Cheeses:
+
+Sauces:
+
+Toppings:
+
+Drink Size: NONE
+
+Toasted
+
+
+Total price: 28.0
+
