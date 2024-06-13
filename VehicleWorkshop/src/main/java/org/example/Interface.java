@@ -200,7 +200,7 @@ public class Interface {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Here is where you Remove vehicles by VIN.");
         System.out.println("Enter the VIN of the vehicle you want to remove:");
-        int vinToRemove = scanner.nextInt();
+        String vinToRemove = scanner.next();
         dealership.removeVehicleByVIN(vinToRemove);
     }
 
@@ -215,16 +215,16 @@ public class Interface {
     public void processBuyVehicleRequest() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is the VIN of the vehicle you would like to purchase?");
-        int vin;
+        String vin;
         try {
-            vin = scanner.nextInt();
+            vin = scanner.next();
             scanner.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("Invalid input.");
             return;
         }
         for (Vehicle v : dealership.getInventory()) {
-            if (v.getVin() == vin) {
+            if (v.getVin().equals(vin)) {
                 System.out.println("What is your name?");
                 String name = scanner.nextLine();
                 System.out.println("What is your email address?");
@@ -248,16 +248,16 @@ public class Interface {
     public void processLeaseVehicleRequest() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is the VIN of the vehicle you'd like to lease?");
-        int vin;
+        String vin;
         try {
-            vin = scanner.nextInt();
+            vin = scanner.next();
             scanner.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("Invalid input.");
             return;
         }
         for (Vehicle v : dealership.getInventory()) {
-            if (v.getVin() == vin) {
+            if (v.getVin().equals(vin)) {
                 System.out.println("What is your name?");
                 String name = scanner.nextLine();
                 System.out.println("What is your email address?");

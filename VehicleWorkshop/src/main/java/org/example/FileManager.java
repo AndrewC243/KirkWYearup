@@ -58,7 +58,7 @@ public class FileManager {
                 String[] data = line.split("\\|");
 
                 if (data.length > 3) {
-                    int vin = Integer.parseInt(data[0]);
+                    String vin = data[0];
                     int year = Integer.parseInt(data[1]);
                     String make = data[2];
                     String model = data[3];
@@ -83,7 +83,7 @@ public class FileManager {
     public static void displayVehicles(List<Vehicle> vehicles){
 
         for (Vehicle vehicle : vehicles){
-            System.out.printf("%d | %d | %s | %s | %s | %s | %d | $%.2f \n", vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
+            System.out.printf("%s | %d | %s | %s | %s | %s | %d | $%.2f \n", vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
         }
     }
 
