@@ -12,11 +12,7 @@ public class Interface {
     private Dealership dealership;
 
     private void init() {
-
-        List<Dealership> dealerships = FileManager.getDealership();
-
-        this.dealership = dealerships.get(0);
-
+        dealership = new Dealership("ABC Motors", "123 Main St, Cityville", "555-1234");
     }
 
     public void homeScreen() {
