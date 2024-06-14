@@ -2,7 +2,6 @@ package org.example;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
-import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class FileManager {
                             rs.getString("phone")
                     ));
                 }
-                return dealerships;1
+                return dealerships;
 
             }
         } catch (SQLException ignored) {}
@@ -102,7 +101,7 @@ public class FileManager {
     }
 
     public void removeVehicleByVIN(String vinToRemove) {
-        String query = "REMOVE FROM vehicles WHERE vin = ?; REMOVE FROM inventory WHERE vin = ?";
+        String query = "REMOVE FROM inventory WHERE vin = ?; REMOVE FROM vehicles WHERE vin = ?";
 
         try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, vinToRemove);
@@ -209,6 +208,26 @@ public class FileManager {
         } catch (SQLException ignored) {}
 
         return vehicles;
+    }
+
+    public void saveContract(Contract c) {
+        String query;
+        if (c instanceof SalesContract) {
+            query = "INSERT INTO sales_contracts(vin,customer_name,customer_email,contract_date,financed,total_price,monthly_payment)" +
+                    "VALUES (?,?,?,?,?,?,?)";
+        }
+        else query = "-- NOT YET IMPLEMENTED";
+
+        try (Connection conn = dataSource.getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, c.getVehicleSold().getVin());
+            ps.setString(2, c.getCustomerName());
+            ps.setString(3, c.getCustoemrEmail());
+            ps.setString(4, c.getDate());
+            if (c instanceof SalesContract) ps.setBoolean(5, ((SalesContract) c).isFinanced());
+            ps.setDouble(6, c.getTotalPrice());
+            ps.setDouble(7, c.getMonthlyPayment());
+            ps.executeUpdate();
+        } catch (SQLException ignored) {}
     }
 
     private Vehicle getVehicleFromResultSet(ResultSet rs) throws SQLException {
