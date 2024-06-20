@@ -23,6 +23,14 @@ public class SalesContract extends Contract {
         return (price * (0.0525 / 12 * Math.pow((0.0525 / 12) + 1, 24))) / (Math.pow(1 + (0.0525 / 12), 24) - 1);
     }
 
+    public double getRecordingFee() { return 100; }
+    public double getProcessingFee() {
+        if (getVehicleSold().getPrice() >= 10000)
+            return 495;
+        return 295;
+    }
+    public double getSalesTax() { return 0.05 * getVehicleSold().getPrice(); }
+
     @Override
     public String toString() {
         return "SALE|"
@@ -45,13 +53,7 @@ public class SalesContract extends Contract {
                 + getMonthlyPayment();
     }
 
-    public double getRecordingFee() { return 100; }
-    public double getProcessingFee() {
-        if (getVehicleSold().getPrice() >= 10000)
-            return 495;
-        return 295;
-    }
-    public double getSalesTax() { return 0.05 * getVehicleSold().getPrice(); }
+
 
     public boolean isFinanced() {
         return financed;

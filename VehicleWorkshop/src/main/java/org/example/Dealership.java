@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+// If you're checking here for the June 20 workshop, it is in the workshop folder
 public class Dealership {
     private String name;
     private String address;
