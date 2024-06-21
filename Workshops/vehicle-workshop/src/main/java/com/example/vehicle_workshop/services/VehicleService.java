@@ -22,6 +22,34 @@ public class VehicleService {
                 .orElseThrow(() -> new ResourceNotFoundException("Vehicle not found"));
     }
 
+    public List<Vehicle> getByPrice(double min, double max) {
+        return vehicleRepository.findByPriceBetween(min,max);
+    }
+
+    public List<Vehicle> getByMake(String make) {
+        return vehicleRepository.findByMake(make);
+    }
+
+    public List<Vehicle> getByModel(String model) {
+        return vehicleRepository.findByModel(model);
+    }
+
+    public List<Vehicle> getByYear(int min, int max) {
+        return vehicleRepository.findByYearBetween(min,max);
+    }
+
+    public List<Vehicle> getByColor(String color) {
+        return vehicleRepository.findByColor(color);
+    }
+
+    public List<Vehicle> getByOdometer(int min, int max) {
+        return vehicleRepository.findByOdometerBetween(min,max);
+    }
+
+    public List<Vehicle> findByType(String type) {
+        return vehicleRepository.findByVehicleType(type);
+    }
+
     public Vehicle addVehicle(Vehicle vehicle) {
         return vehicleRepository.save(vehicle);
     }
