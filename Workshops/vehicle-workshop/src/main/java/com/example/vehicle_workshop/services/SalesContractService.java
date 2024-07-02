@@ -33,7 +33,7 @@ public class SalesContractService {
         salesContractToUpdate.setFinanced(salesContract.isFinanced());
         salesContractToUpdate.setDate(salesContract.getDate());
         salesContractToUpdate.setCustomerName(salesContract.getCustomerName());
-        salesContractToUpdate.setCustoemrEmail(salesContract.getCustoemrEmail());
+        salesContractToUpdate.setCustomerEmail(salesContract.getCustomerEmail());
         return salesContractRepository.save(salesContractToUpdate);
     }
 

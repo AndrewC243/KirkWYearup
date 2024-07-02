@@ -1,9 +1,6 @@
 package com.example.vehicle_workshop.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -47,7 +44,7 @@ public class SalesContract extends Contract {
         return "SALE|"
                 + getDate() + "|"
                 + getCustomerName() + "|"
-                + getCustoemrEmail() + "|"
+                + getCustomerEmail() + "|"
                 + getVehicleSold().getVin() + "|"
                 + getVehicleSold().getYear() + "|"
                 + getVehicleSold().getMake() + "|"

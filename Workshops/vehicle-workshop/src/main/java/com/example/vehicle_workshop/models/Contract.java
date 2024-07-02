@@ -1,8 +1,6 @@
 package com.example.vehicle_workshop.models;
 
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -10,9 +8,9 @@ import lombok.Data;
 public abstract class Contract {
     private String date;
     private String customerName;
-    private String custoemrEmail;
+    private String customerEmail;
     @OneToOne
-    @JoinColumn(referencedColumnName = "vin", name = "vin")
+    @PrimaryKeyJoinColumn(name = "vin")
     private Vehicle vehicleSold;
 
     public abstract double getTotalPrice();

@@ -29,7 +29,7 @@ public class LeaseContractService {
     public LeaseContract updateLeaseContract(long id, LeaseContract leaseContract) {
         LeaseContract old = getLeaseContractById(id);
         old.setDate(leaseContract.getDate());
-        old.setCustoemrEmail(leaseContract.getCustoemrEmail());
+        old.setCustomerEmail(leaseContract.getCustomerEmail());
         old.setCustomerName(leaseContract.getCustomerName());
         old.setVehicleSold(leaseContract.getVehicleSold());
         return leaseContractRepository.save(old);

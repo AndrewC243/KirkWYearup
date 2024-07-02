@@ -34,7 +34,7 @@ public class LeaseContract extends Contract {
         return "LEASE|"
                 + getDate() + "|"
                 + getCustomerName() + "|"
-                + getCustoemrEmail() + "|"
+                + getCustomerEmail() + "|"
                 + getVehicleSold().getVin() + "|"
                 + getVehicleSold().getYear() + "|"
                 + getVehicleSold().getMake() + "|"
